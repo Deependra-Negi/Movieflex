@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    *{
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    body{
+        width: 100vw;
+    }
+    #nav{
+        display: grid;
+        direction: rtl;
+        grid-template-columns: repeat(10, 10%);
+        margin: auto;
+        margin-top: 30px;
+        width: 94%;
+        height: 60px;
+        border: 1px solid black;
+        padding: 7px 30px;
+    }
+    #nav > div{
+        min-width: 50px;
+        max-width: 130px;
+        height: 40px;
+        text-align: center;
+        padding: 8.5px;
+    }
+
+</style>
+<body>
+    <nav>
+         <div id="nav">
+             <div onclick="(location.href='signup.html')" id="signup">Signup</div>
+             <div onclick="(location.href='login.html')" id="login">Login</div>
+             <div onclick="(location.href='home.html')" id="home">Home</div>
+         </div>
+    </nav>
+   
+</body>
+</html>

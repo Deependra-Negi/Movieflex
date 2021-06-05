@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    #loginParent{
+        width: 400px;
+        height: 500px;
+        border-style:none;
+        box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.103);
+        margin: 100px auto;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.185);
+    }
+    #loginForm{
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+        width: 75%;
+        height: 80%;
+        margin: auto;
+    }
+    #loginForm > div{
+        width: 100%;
+        height: 100%;
+    }
+    input, #signupBtn{
+        width: 210px;
+        height: 40px;
+        margin: 3% 11%;
+        border-style: none;
+        box-shadow: 5px 5px 20px -12px rgba(0, 0, 0, 0.716);
+        padding-left: 20px;
+        outline-style: none;
+    }
+    #signupBtn{
+        background: rgba(233, 218, 3, 0.808);
+        margin-left: 15% ;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.342);
+        color: rgb(58, 71, 0);
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 550;
+    }
+    p{
+        color: rgb(65, 65, 65);
+        font-size: 12px;
+        text-align: center;
+    }
+    span{
+        color: rgba(45, 17, 226, 0.89);
+        font-weight: 550;
+    }
+    a{
+        text-decoration: none;
+    }
+    #nav{
+        display: grid;
+        direction: rtl;
+        grid-template-columns: repeat(10, 10%);
+        margin: auto;
+        margin-top: 30px;
+        width: 93%;
+        height: 42px;
+        border: 1px solid black;
+        padding: 7px 30px;
+    }
+    #nav > div{
+        min-width: 50px;
+        max-width: 130px;
+        height: 40px;
+        text-align: center;
+        padding: 8.5px;
+    }
+
+</style>
+<body>
+    <nav>
+         <div id="nav">
+             <div onclick="(location.href='signup.html')" id="signup">Signup</div>
+             <div onclick="(location.href='login.html')" id="login">Login</div>
+             <div onclick="(location.href='home.html')" id="home">Home</div>
+         </div>
+    </nav>
+
+    <div id="loginParent">
+        <form id="loginForm">
+            <div>
+                <input type="text" placeholder="Name" id="name">
+                <input type="text" placeholder="Contact" id="contact">
+                <input type="text" placeholder="Email" id="email">
+                <input type="password" placeholder="Password" id="password">
+                <button onclick="signup()" id="signupBtn">SignUp</button>
+                <p>Already a member? <span> <a href="login.html">Login</a></span></p>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
+<script>
+    
+
+    function signup(e){
+
+        // e.preventDefault()
+
+        let form = document.getElementById('loginForm')
+
+        let name = form.name.value 
+
+        let contact = form.contact.value 
+
+        let email = form.email.value
+        
+        let password = form.password.value 
+
+        let signupObj = {
+            name,       //since key and value is same
+            contact,
+            email,
+            password,
+        }
+
+        let arr;
+
+        arr = localStorage.getItem('users')
+
+        if(arr==null){
+            arr=[]  //for first time users
+        }
+        else{
+            arr = JSON.parse(localStorage.getItem('users'))
+        }
+
+        arr.push(signupObj)
+
+        localStorage.setItem('users', JSON.stringify(arr))
+
+    }
+</script>

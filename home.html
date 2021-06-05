@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    *{
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    body{
+        width: 100vw;
+        height: 100vw;
+    }
+    #nav{
+        display: grid;
+        direction: rtl;
+        grid-template-columns: repeat(10, 10%);
+        margin: auto;
+        margin-top: 30px;
+        width: 94%;
+        height: 60px;
+        border: 1px solid black;
+        padding: 7px 30px;
+    }
+    #nav > div{
+        min-width: 50px;
+        max-width: 130px;
+        height: 40px;
+        text-align: center;
+        padding: 8.5px;
+    }
+    #showcase{
+        /* border: .5px solid rgb(46, 46, 46); */
+        width:85%;
+        height: 25%;
+        margin: 50px auto;
+        box-shadow: 2px 15px 20px 1px rgba(0, 0, 0, 0.836);
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    #showMovies{
+        display: grid;
+        grid-template-columns: repeat(3, 30%);
+        grid-template-rows: repeat(3, 33%);
+        grid-gap: 5%;
+        margin: auto;
+        padding: 0% 20%;
+    }
+
+    #showMovies > div{
+        box-shadow: 05px 0px 10px 0px rgba(0, 0, 0, 0.589);
+        width: 300px;
+        height: 300px;
+         border: .5px solid rgb(46, 46, 46);
+         background: rgba(84, 199, 164, 0.705);
+    }
+    #showMovies > div > img{
+        width: 100%;
+        height: 83.8%;
+        /* margin-top: 23px; */
+    }
+    #showMovies > div > p:first-child{
+        font-size: 16px;
+        font-weight: 600;
+        color: rgb(39, 39, 39);
+        padding-left: 15px;
+        padding-top: 15px;
+        /* background: rgba(165, 42, 42, 0.568); */
+    }
+    #showMovies > div > p:nth-child(2){
+        font-size: 12px;
+        /* background: rgba(165, 42, 42, 0.568); */
+        padding-left: 15px;
+    }
+
+
+</style>
+<body>
+    <nav>
+         <div id="nav">
+             <div onclick="(location.href='signup.html')" id="signup">Signup</div>
+             <div onclick="(location.href='login.html')" id="login">Login</div>
+             <div onclick="(location.href='home.html')" id="home">Home</div>
+         </div>
+    </nav>
+
+    <div id="showcase">
+        <img name="slide" width="1000px" height="300px">
+    </div>
+
+    <div id="showMovies"></div>
+   
+</body>
+</html>
+<script>
+    var i = 0;
+    var img = [];
+
+    //image list
+    img[0] = 'img4.jpg';
+    img[1] = 'img1.jpg';
+    img[2] = 'img2.jpg';
+    img[3] = 'img3.jpg';
+
+    //change image
+
+    function slideshow(){
+        document.slide.src = img[i];
+
+        if(i<img.length-1){
+            i++;
+        }
+        else{
+            i=0;
+        }
+        setTimeout("slideshow()", 3000)
+    }
+    window.onload = slideshow;
+
+const movies = [
+    {
+        name: 'Paracite',
+        date: 2019,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg' ,
+    },
+    {
+        name: 'Casablanca',
+        date: 1942,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    },
+    {
+        name: 'The Shining',
+        date: 1980,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    },
+    {
+        name: 'The Dark Knight',
+        date: 2008,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    },
+    {
+        name: 'Pulp Fiction',
+        date: 1994,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    },
+    {
+        name: 'The Shawshank Redemption',
+        date: 1994,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    },
+    {
+        name: '2001: A Space Odyssey',
+        date: 1968,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    },
+    {
+        name: 'Super Deluxe',
+        date: 2019,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    },
+    {
+        name: 'Nobody',
+        date: 2021,
+        url: 'https://i.ytimg.com/vi/5E4YKeNqIcE/maxresdefault.jpg',
+    }
+    
+]
+
+if(localStorage.getItem('movies')==null){
+    localStorage.setItem('movies', JSON.stringify(movies))
+}
+
+let showMovies= document.getElementById('showMovies')
+
+function appendMovies(data){
+    showMovies.innerHTML=null
+
+data.forEach(function(el){
+    let div = document.createElement('div')
+
+    let pName = document.createElement('p')
+    pName.innerHTML = `${el.name}`
+
+    let pDate = document.createElement('p')
+    pDate.innerHTML = `${el.date}`
+
+    let pImg = document.createElement('IMG')
+    pImg.src = `${el.url}`
+
+    div.append(pName, pDate, pImg)
+
+    div.setAttribute('width', '300px')
+
+    showMovies.append(div)
+})
+
+}
+
+let data = JSON.parse(localStorage.getItem('movies'))
+
+appendMovies(data)
+
+</script>

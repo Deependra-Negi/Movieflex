@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        /* width: 100vw;
+        height: 100vh; */
+    }
+    #nav{
+        display: grid;
+        direction: rtl;
+        grid-template-columns: repeat(10, 10%);
+        margin: auto;
+        margin-top: 30px;
+        width: 93%;
+        height: 42px;
+        border: 1px solid black;
+        padding: 7px 30px;
+    }
+    #nav > div{
+        min-width: 50px;
+        max-width: 130px;
+        height: 40px;
+        text-align: center;
+        padding: 8.5px;
+    }
+    #loginParent{
+        width: 400px;
+        height: 500px;
+        border-style:none;
+        box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.103);
+        margin: 100px auto;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.185);
+    }
+    #loginForm{
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+        width: 75%;
+        height: 80%;
+        margin: auto;
+    }
+    #loginForm > div{
+        width: 100%;
+        height: 100%;
+    }
+    input, #loginBtn{
+        width: 210px;
+        height: 40px;
+        margin: 10% 11%;
+        border-style: none;
+        box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.103);
+        padding-left: 20px;
+        outline-style: none;
+    }
+    #loginBtn{
+        background: rgba(233, 218, 3, 0.808);
+        margin-left: 15% ;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.342);
+        color: rgb(58, 71, 0);
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 550;
+    }
+    p{
+        color: rgb(65, 65, 65);
+        font-size: 12px;
+        text-align: center;
+    }
+    span{
+        color: rgba(54, 28, 226, 0.849);
+        font-weight: 550;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+
+</style>
+<body>
+    <nav>
+         <div id="nav">
+             <div onclick="(location.href='signup.html')" id="signup">Signup</div>
+             <div onclick="(location.href='login.html')" id="login">Login</div>
+             <div onclick="(location.href='home.html')" id="home">Home</div>
+         </div>
+    </nav>
+
+    <div id="loginParent">
+        <form id="loginForm">
+            <div>
+                <input type="text" placeholder="Email" id="email">
+                <input type="password" placeholder="Password" id="password">
+                <button id="loginBtn">login</button>
+                <p>Create a new account. <span> <a href="signup.html">SignUp</a></span></p>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    //get data from localstorage
+
+    //check name & pass is correct
+    //if wrong alert 'wrong credentials', else redirect to home.html 
+</script>
