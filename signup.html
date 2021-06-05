@@ -97,7 +97,7 @@
                 <input type="text" placeholder="Contact" id="contact">
                 <input type="text" placeholder="Email" id="email">
                 <input type="password" placeholder="Password" id="password">
-                <button onclick="signup()" id="signupBtn">SignUp</button>
+                <button onclick="signup(event)" id="signupBtn">SignUp</button>
                 <p>Already a member? <span> <a href="login.html">Login</a></span></p>
             </div>
         </form>
@@ -107,10 +107,11 @@
 </html>
 <script>
     
-
+var countf = 0
     function signup(e){
 
-        // e.preventDefault()
+         e.preventDefault()
+
 
         let form = document.getElementById('loginForm')
 
@@ -127,6 +128,11 @@
             contact,
             email,
             password,
+        }
+         //if any fiels is empty
+
+        if(name=='' || contact==''||email==''||password==''){
+            alert('Fill in all fields')
         }
 
         let arr;

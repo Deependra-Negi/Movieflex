@@ -98,7 +98,7 @@
             <div>
                 <input type="text" placeholder="Email" id="email">
                 <input type="password" placeholder="Password" id="password">
-                <button id="loginBtn">login</button>
+                <button onclick="login(event)" id="loginBtn">login</button>
                 <p>Create a new account. <span> <a href="signup.html">SignUp</a></span></p>
             </div>
         </form>
@@ -108,8 +108,33 @@
 </html>
 
 <script>
-    //get data from localstorage
 
-    //check name & pass is correct
-    //if wrong alert 'wrong credentials', else redirect to home.html 
+    function login(e) {
+
+        e.preventDefault()
+    //get data from login form
+
+    let email = document.getElementById('email').value
+    let password = document.getElementById('password').value
+
+    //compare with localstorage value
+    
+    const users = JSON.parse(localStorage.getItem('users'))
+    
+    count = 0;
+    for(i=0; i<users.length; i++){
+        if(users[i].email===email && users[i].password===password){
+            window.location.href='home.html'
+            break;
+        }
+        //if wrong alert 'wrong credentials', else redirect to home.html
+        else{
+            count+=1
+        }
+    }
+    if (count>0){
+        alert('wrong credentials')
+    }
+
+    } 
 </script>
