@@ -40,12 +40,25 @@
         /* border: .5px solid rgb(46, 46, 46); */
         width:85%;
         height: 25%;
-        margin: 50px auto;
+        margin: 50px auto 150px auto;
         box-shadow: 2px 15px 20px 1px rgba(0, 0, 0, 0.836);
     }
     img{
         width: 100%;
         height: 100%;
+    }
+    #filter{
+        display: flex;
+        flex-flow: row;
+        width: 500px;
+        height: 50px;
+        margin: 0px auto 30px auto;
+        
+    }
+    #filter > button{
+        width: 50%;
+        background: palegreen;
+        font-size: smaller;
     }
     #showMovies{
         display: grid;
@@ -95,6 +108,11 @@
 
     <div id="showcase">
         <img name="slide" width="1000px" height="300px">
+    </div>
+
+    <div id="filter">
+        <button onclick="sortLH()" id="lh">Rating : Low to High</button>
+        <button onclick="sortHL()" id="lh">Rating : High to Low</button>
     </div>
 
     <div id="showMovies"></div>
@@ -208,5 +226,20 @@ data.forEach(function(el){
 let data = JSON.parse(localStorage.getItem('movies'))
 
 appendMovies(data)
+
+function sortLH(){
+    let sortmovies = JSON.parse(localStorage.getItem(movies))
+    sortmovies = movies.sort(function (a,b){
+        return a.date-b.date
+    })
+    appendMovies(sortmovies)
+}
+function sortHL(){
+    let sortmovies = JSON.parse(localStorage.getItem(movies))
+    sortmovies = movies.sort(function (a,b){
+        return b.date-a.date
+    })
+    appendMovies(sortmovies)
+}
 
 </script>
